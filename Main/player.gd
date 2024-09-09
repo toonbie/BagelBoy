@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
 @export var speed = 300.0
-@export var health = 3
+var health = playerData.health
 
+signal game_over
+
+func _ready():
+	$TextureProgressBar.max_value = playerData.health
 # Player Movement
 func _physics_process(delta):
 	
@@ -20,6 +24,11 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-func takeDMG():
-	health -= 1
-	print(health)
+func takeDMG(damage):
+	playerData.health = playerData.health - damage
+	$TextureProgressBar.value = playerData.health
+	print("ow")
+	if ( playerData.health <= 0 ):
+		game_over.emit()
+	
+	

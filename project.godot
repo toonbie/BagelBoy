@@ -14,3 +14,7 @@ config/name="BagelBoy"
 run/main_scene="res://Main/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+playerData="*res://playerData.gd"

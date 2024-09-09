@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c0g8icn2egqs1"]
+[gd_scene load_steps=18 format=4 uid="uid://c0g8icn2egqs1"]
 
 [ext_resource type="Texture2D" uid="uid://uddcwlh05xq0" path="res://grass.png" id="1_b2mi7"]
 [ext_resource type="Script" path="res://Main/player.gd" id="1_uokfx"]
@@ -168,6 +168,8 @@ pattern_0 = SubResource("TileMapPattern_mcmoe")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xholw"]
 size = Vector2(54, 52)
 
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_oh610"]
+
 [node name="Main" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -184,7 +186,6 @@ position = Vector2(596, 318)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_uokfx")
-health = 4
 
 [node name="Icon" type="Sprite2D" parent="Player"]
 position = Vector2(-37, -37)
@@ -196,5 +197,14 @@ position = Vector2(-37, -37)
 shape = SubResource("RectangleShape2D_xholw")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Player"]
+offset_left = 258.0
+offset_top = -279.0
+offset_right = 524.0
+offset_bottom = -151.0
+max_value = 6.0
+value = 6.0
+texture_progress = SubResource("CurveXYZTexture_oh610")
 
 [connection signal="child_entered_tree" from="TileMapLayer" to="Player" method="_on_tile_map_layer_child_entered_tree"]
