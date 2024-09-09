@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://svbnb4j6kr84"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_0a1b4"]
+[ext_resource type="Texture2D" uid="uid://c2pflqrs4uxbq" path="res://smokey bacon.png" id="1_1bcsg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r22pl"]
+radius = 17.0
+height = 56.0
+
+[node name="Enemy" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_0a1b4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_r22pl")
+
+[node name="SmokeyBacon" type="Sprite2D" parent="."]
+texture = ExtResource("1_1bcsg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
