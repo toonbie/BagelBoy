@@ -29,6 +29,6 @@ func takeDMG(damage):
 	$TextureProgressBar.value = playerData.health
 	print("ow")
 	if ( playerData.health <= 0 ):
-		game_over.emit()
+		get_tree().change_scene_to_file("res://gameover.tscn")
 	
 	
