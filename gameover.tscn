@@ -2,43 +2,59 @@
 
 [ext_resource type="Script" path="res://gameover.gd" id="1_vhlr1"]
 
-[node name="GameOver" type="Node2D"]
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_vhlr1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1918.0
+offset_bottom = 1079.0
 color = Color(0.47451, 1, 0.627451, 0.72549)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 528.0
-offset_top = 280.0
-offset_right = 631.0
-offset_bottom = 309.0
-rotation = 0.000815479
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 1921.0
+offset_bottom = 1079.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Game Over" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "GAME OVER!"
 
-[node name="Continue" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 352.0
-offset_right = 652.0
-offset_bottom = 400.0
-text = "Continue"
+[node name="MarginContainer3" type="MarginContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
 
-[node name="Quit" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 496.0
-offset_right = 652.0
-offset_bottom = 544.0
-text = "Quit"
-
-[node name="Main Menu" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 424.0
-offset_right = 652.0
-offset_bottom = 472.0
+[node name="Main Menu" type="Button" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 text = "Main Menu"
 
-[connection signal="pressed" from="Continue" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Main Menu" to="." method="_on_main_menu_pressed"]
+[node name="MarginContainer4" type="MarginContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="MarginContainer5" type="MarginContainer" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

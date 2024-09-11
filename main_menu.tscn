@@ -15,43 +15,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.997916, 1)
 script = ExtResource("1_vd1kt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+scale = Vector2(1.67072, 1.66446)
 color = Color(0.612067, 0.75299, 0.412008, 1)
 
-[node name="Button" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 256.0
-offset_right = 672.0
-offset_bottom = 320.0
-text = "Start"
+offset_right = 1153.0
+offset_bottom = 649.0
+alignment = 1
 
-[node name="Button2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 448.0
-offset_right = 672.0
-offset_bottom = 512.0
-text = "Quit"
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+alignment = 1
 
-[node name="Button3" type="Button" parent="."]
-offset_left = 480.0
-offset_top = 352.0
-offset_right = 672.0
-offset_bottom = 416.0
-text = "Settings"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 120.0
-offset_right = 624.0
-offset_bottom = 152.0
+[node name="Title" type="Label" parent="ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 theme = SubResource("Theme_sfd0x")
 theme_override_colors/font_color = Color(0, 0.67451, 0.678431, 1)
 theme_override_font_sizes/font_size = 0
@@ -59,6 +44,30 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_nf22l")
 text = "Bagel Boy!"
 label_settings = SubResource("LabelSettings_voe05")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_button_2_pressed"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Start" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="MarginContainer3" type="MarginContainer" parent="ColorRect/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="ColorRect/HBoxContainer/VBoxContainer/Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/VBoxContainer/Settings" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/VBoxContainer/Quit" to="." method="_on_button_2_pressed"]
